@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>İkili Sohbet</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- BAŞLANGIÇ EKRANI: Oda kur veya katıl -->
+    <div id="screen-start" class="screen">
+      <div class="logo">🎙️ İkili Sohbet</div>
+      <p class="subtitle">Sadece sen ve arkadaşın için</p>
+
+      <div class="card">
+        <button id="btn-create" class="btn primary">Oda Oluştur</button>
+        <div class="divider">veya</div>
+        <input id="input-code" class="input" placeholder="6 haneli oda kodu gir" maxlength="6" inputmode="numeric" />
+        <button id="btn-join" class="btn secondary">Odaya Katıl</button>
+      </div>
+
+      <div id="room-code-display" class="room-code-box hidden">
+        <div class="label">Oda kodun (arkadaşına gönder):</div>
+        <div id="room-code-text" class="room-code">------</div>
+        <div class="status" id="waiting-status">Arkadaşının katılması bekleniyor...</div>
+      </div>
+
+      <div id="start-error" class="error hidden"></div>
+    </div>
+
+    <!-- SOHBET EKRANI -->
+    <div id="screen-chat" class="screen hidden">
+      <div class="topbar">
+        <div class="peer-status">
+          <span id="connection-dot" class="dot"></span>
+          <span id="connection-text">Bağlanılıyor...</span>
+        </div>
+        <button id="btn-leave" class="btn small danger">Ayrıl</button>
+      </div>
+
+      <div class="voice-panel">
+        <button id="btn-mic" class="mic-btn">🎤</button>
+        <div class="mic-label" id="mic-label">Mikrofon Açık</div>
+
+        <div class="voice-settings">
+          <label class="toggle-row">
+            <input type="checkbox" id="toggle-noise" checked />
+            <span>Gürültü Önleyici</span>
+          </label>
+          <label class="toggle-row">
+            <input type="checkbox" id="toggle-echo" checked />
+            <span>Eko Engelleme</span>
+          </label>
+          <label class="toggle-row">
+            <input type="checkbox" id="toggle-gain" checked />
+            <span>Otomatik Ses Seviyesi</span>
+          </label>
+        </div>
+
+        <div class="volume-row">
+          <span>🔊</span>
+          <input type="range" id="volume-slider" min="0" max="100" value="100" />
+        </div>
+      </div>
+
+      <div class="messages" id="messages"></div>
+
+      <div class="message-input-row">
+        <input id="input-message" class="input" placeholder="Mesaj yaz..." />
+        <button id="btn-send" class="btn primary small">Gönder</button>
+      </div>
+    </div>
+
+  </div>
+
+  <audio id="remote-audio" autoplay></audio>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

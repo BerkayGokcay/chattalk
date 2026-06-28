@@ -1,15 +1,26 @@
 {
-  "name": "voicechat-signaling-server",
+  "name": "ikili-sohbet",
   "version": "1.0.0",
-  "description": "Iki kisilik sesli/yazili sohbet uygulamasi icin WebRTC signaling sunucusu",
-  "main": "server.js",
+  "description": "Sadece sen ve bir arkadaşın için sesli + yazılı sohbet uygulaması",
+  "main": "main.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "electron .",
+    "build-win": "electron-builder --win"
   },
-  "engines": {
-    "node": ">=18.0.0"
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
   },
-  "dependencies": {
-    "ws": "^8.18.0"
+  "build": {
+    "appId": "com.berkay.ikilisohbet",
+    "productName": "Ikili Sohbet",
+    "win": {
+      "target": "nsis"
+    },
+    "files": [
+      "**/*",
+      "!node_modules/electron-builder",
+      "!node_modules/.cache"
+    ]
   }
 }
